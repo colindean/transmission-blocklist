@@ -2,6 +2,9 @@ language: minimal
 branches:
   only:
     - master # build master branch only
+install:
+  - sudo apt-get -qq update
+  - sudo apt-get -y install aria2
 script:
   - ./blocklist-build.sh
 deploy:
