@@ -1,4 +1,5 @@
 language: minimal
+dist: focal
 branches:
   only:
     - master # build master branch only
