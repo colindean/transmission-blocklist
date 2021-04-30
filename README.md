@@ -1,6 +1,6 @@
 # blocklist for transmission
 
-[![Build Status](https://travis-ci.org/colindean/transmission-blocklist.svg?branch=master)](https://travis-ci.org/colindean/transmission-blocklist)
+[![Build Status](https://travis-ci.com/colindean/transmission-blocklist.svg?branch=master)](https://travis-ci.com/colindean/transmission-blocklist)
 
 This script will update a blocklist
 
