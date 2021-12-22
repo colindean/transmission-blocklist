@@ -6,7 +6,7 @@ name: Build Blocklist
   pull_request:
     branches:
       - master
-    schedule:
+  schedule:
       - cron: "0 0 23 * *"
 jobs:
   Build:
@@ -21,13 +21,11 @@ jobs:
           sudo apt-get -qq update
           sudo apt-get -y install aria2
           ./blocklist-build.sh
-      # - run: |
-      #   git tag $TAG
-      #   TAG=${TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+          echo "build_tag=$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)" >> $GITHUB_ENV
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
+          automatic_release_tag: "${{ env.build_tag }}"
           prerelease: false
           title: "Latest Blocklist"
           files: |
