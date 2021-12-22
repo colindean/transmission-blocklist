@@ -27,6 +27,6 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "${{ env.build_tag }}"
           prerelease: false
-          title: "Latest Blocklist"
+          title: "${{ env.build_tag }}"
           files: |
             blocklist.gz
