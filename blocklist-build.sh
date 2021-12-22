@@ -7,7 +7,7 @@ if [ -z "${NO_CACHE}" ] && [ -n "$(command -v aria2c)" ]; then
   mkdir -p "${CACHE}"
 
   curl -s https://www.iblocklist.com/lists.json |
-    jq -r '.lists[] | .name as $n | select((.subscription == "false") and ($n | startswith("iana-") | not) and (["fornonlancomputers", "bogon", "The Onion Router"] | index($n) | not)) | .list' |
+    jq --raw-output --from-file filter.jq |
     awk 'length($0) > 2 { print "http://list.iblocklist.com/?fileformat=p2p&archiveformat=gz&list=" $0 }' |
     aria2c \
       --input-file=- \
@@ -26,7 +26,7 @@ if [ -z "${NO_CACHE}" ] && [ -n "$(command -v aria2c)" ]; then
 else
 
   curl -s https://www.iblocklist.com/lists.json |
-    jq -r '.lists[] | .name as $n | select((.subscription == "false") and ($n | startswith("iana-") | not) and (["fornonlancomputers", "bogon", "The Onion Router"] | index($n) | not)) | .list' |
+    jq --raw-output --from-file filter.jq |
     awk 'length($0) > 2 { print "http://list.iblocklist.com/?fileformat=p2p&archiveformat=gz&list=" $0 }' |
     xargs wget -O - |
     gunzip |
