@@ -7,7 +7,7 @@ name: Build Blocklist
     branches:
       - master
   schedule:
-      - cron: "0 0 23 * *"
+      - cron: "0 0 * * 4"
 jobs:
   Build:
     runs-on: '${{ matrix.os }}'
