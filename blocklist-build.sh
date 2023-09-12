@@ -64,4 +64,5 @@ else
 fi
 
 mv blocklist.gz undeduped.gz
-zcat undeduped.gz | sort --unique | gzip -9 > blocklist.gz
+gzcat undeduped.gz | sort --unique | gzip -9 > blocklist.gz
+rm undeduped.gz
