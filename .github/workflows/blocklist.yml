@@ -2,10 +2,10 @@ name: Build Blocklist
 'on':
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
   schedule:
       - cron: "0 0 * * 4"
 jobs:
@@ -14,13 +14,17 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-20.04
+          - ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: |
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build and resolve tag
+        run: |
           ./blocklist-build.sh
           echo "build_tag=$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)" >> $GITHUB_ENV
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Release on Main Push
+        if: '!github.event.pull_request'
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "${{ env.build_tag }}"
