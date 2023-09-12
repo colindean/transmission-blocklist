@@ -64,5 +64,14 @@ else
 fi
 
 mv blocklist.gz undeduped.gz
-gzcat undeduped.gz | sort --unique | gzip -9 > blocklist.gz
+
+if command -v gzcat > /dev/null; then
+  gzcat="gzcat"
+elif command -v zcat > /dev/null; then
+  gzcat="zcat"
+else
+  gzcat="gunzip -cd"
+fi
+
+${gzcat} undeduped.gz | sort --unique | gzip -9 > blocklist.gz
 rm undeduped.gz
