@@ -17,18 +17,18 @@ jobs:
           - ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Build and resolve tag
         run: |
           ./blocklist-build.sh
           echo "build_tag=$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)" >> $GITHUB_ENV
       - name: Release on Main Push
         if: '!github.event.pull_request'
-        uses: "marvinpinto/action-automatic-releases@latest"
+        uses: "softprops/action-gh-release@v1"
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "${{ env.build_tag }}"
+          # repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          tag_name: "${{ env.build_tag }}"
           prerelease: false
-          title: "${{ env.build_tag }}"
+          name: "${{ env.build_tag }}"
           files: |
             blocklist.gz
