@@ -58,7 +58,7 @@ if [ -z "${NO_CACHE}" ] && [ -n "$(command -v aria2c)" ]; then
       --max-connection-per-server="$(nproc)"
 
   # and then rely on gunzip to output sequentially
-  unzip --stdout "${CACHE}"/* |
+  ${gzcat} --stdout "${CACHE}"/* |
     grep -E -v '^#' |
     gzip -1 > blocklist.gz
   # and cleanup afterward
