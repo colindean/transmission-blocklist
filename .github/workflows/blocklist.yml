@@ -22,9 +22,14 @@ jobs:
         run: |
           ./blocklist-build.sh
           echo "build_tag=$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)" >> $GITHUB_ENV
-      - name: Release on Main Push
-        if: '!github.event.pull_request'
-        uses: "softprops/action-gh-release@v1"
+      - name: Check if release is needed
+        id: check
+        continue-on-error: true
+        run: |
+          ./compare-previous.sh
+      - name: Release on non-PRs if needed
+        if: "!github.event.pull_request && steps.check.outcome == 'success'"
+        uses: "softprops/action-gh-release@v2"
         with:
           # repo_token: "${{ secrets.GITHUB_TOKEN }}"
           tag_name: "${{ env.build_tag }}"
