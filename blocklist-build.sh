@@ -42,13 +42,6 @@ if [ -z "${NO_CACHE}" ] && [ -n "$(command -v aria2c)" ]; then
       --stderr \
       --max-connection-per-server="$(nproc)"
 
-  # and then rely on gunzip to output sequentially
-  gunzip --stdout "${CACHE}"/* |
-    grep -E -v '^#' |
-    gzip -1 > blocklist.gz
-  # and cleanup afterward
-  rm -rf "${CACHE}"
-
   get_zip_urls |
     aria2c \
       --input-file=- \
@@ -73,11 +66,11 @@ if [ -z "${NO_CACHE}" ] && [ -n "$(command -v aria2c)" ]; then
   #     --max-connection-per-server="$(nproc)"
 
   # and then rely on cat to output sequentially
-  cat "${CACHE}"/* |
-    grep -E -v '^#' |
-    gzip -1 >> blocklist.gz
-  # and cleanup afterward
-  rm -rf "${CACHE}"
+  # cat "${CACHE}"/* |
+  #   grep -E -v '^#' |
+  #   gzip -1 >> blocklist.gz
+  # # and cleanup afterward
+  # rm -rf "${CACHE}"
 
 else
 
