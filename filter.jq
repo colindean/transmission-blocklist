@@ -3,13 +3,13 @@
 | select(
     (.subscription == "false")
     and (
-      $n 
-      | startswith("iana-") 
+      $n
+      | startswith("iana-")
       | not
     )
     and (
-      ["fornonlancomputers", "bogon", "The Onion Router"] 
-      | index($n) 
+      ["fornonlancomputers", "bogon", "The Onion Router"]
+      | index($n)
       | not
     )
 )
