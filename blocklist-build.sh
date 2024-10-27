@@ -60,7 +60,7 @@ else
     xargs wget -O - |
     grep -E -v '^#' |
     gzip -1 >> blocklist.gz
-    
+
 fi
 
 mv blocklist.gz undeduped.gz
