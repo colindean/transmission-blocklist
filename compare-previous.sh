@@ -21,4 +21,4 @@ function is_latest_same_as_current() {
       "${LATEST_FILE}" "${CURRENT_FILE}"
 }
 
-get_previous && is_latest_same_as_current
+get_previous && !is_latest_same_as_current
