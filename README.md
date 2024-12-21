@@ -1,11 +1,14 @@
 # A blocklist for Transmission & others
 
-![GitHub Release Date](https://img.shields.io/github/release-date/colindean/transmission-blocklist)
-![GitHub Release](https://img.shields.io/github/v/release/colindean/transmission-blocklist)
-![GitHub License](https://img.shields.io/github/license/colindean/transmission-blocklist)
+![Dynamic badge with number of ranges block](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2Fcolindean%2Ftransmission-blocklist%2Freleases%2Flatest%2Fdownload%2Fstats.json&query=%24.range_count&label=IP%20ranges%20blocked)
 
-[![Build Blocklist](https://github.com/colindean/transmission-blocklist/actions/workflows/blocklist.yml/badge.svg)](https://github.com/colindean/transmission-blocklist/actions/workflows/blocklist.yml)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/y/colindean/transmission-blocklist)
+
+![Dynamic badge with GitHub Release Date](https://img.shields.io/github/release-date/colindean/transmission-blocklist)
+![Dynamic badge with GitHub Release](https://img.shields.io/github/v/release/colindean/transmission-blocklist)
+![Dynamic badge with GitHub License](https://img.shields.io/github/license/colindean/transmission-blocklist)
+
+[![Dynamic badge with Build Blocklist action status](https://github.com/colindean/transmission-blocklist/actions/workflows/blocklist.yml/badge.svg)](https://github.com/colindean/transmission-blocklist/actions/workflows/blocklist.yml)
+![Dynamic badge with GitHub commit activity](https://img.shields.io/github/commit-activity/y/colindean/transmission-blocklist)
 
 
 This repo uses GitHub Actions to assemble and publish a comprehensive IP blocklist weekly.

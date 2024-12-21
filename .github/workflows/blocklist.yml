@@ -23,6 +23,7 @@ jobs:
       - name: Build and resolve tag
         run: |
           ./blocklist-build.sh
+          ./analyze.sh > stats.json
           echo "build_tag=$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)" >> $GITHUB_ENV
       - name: Check if release is needed
         id: check
@@ -39,3 +40,4 @@ jobs:
           name: "${{ env.build_tag }}"
           files: |
             blocklist.gz
+            stats.json
