@@ -1,5 +1,6 @@
 name: Build Blocklist
 'on':
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -31,7 +32,7 @@ jobs:
         run: |
           ./compare-previous.sh
       - name: Release on non-PRs if needed
-        if: "!github.event.pull_request && steps.check.outcome == 'success'"
+        if: "github.event.workflow_dispatch || ( !github.event.pull_request && steps.check.outcome == 'success' )"
         uses: "softprops/action-gh-release@v2"
         with:
           # repo_token: "${{ secrets.GITHUB_TOKEN }}"
