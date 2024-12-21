@@ -23,5 +23,5 @@ LANG=en_US.utf8
 LC_ALL=en_US.utf8
 
 jq -n -c -M -S \
-  --arg range_count "$(printf "%'d" $(range_count) | tr ',' ' ')" \
+  --arg range_count "$(printf "%'d" "$(range_count)" | tr ',' ' ')" \
   '{range_count: $range_count}'
