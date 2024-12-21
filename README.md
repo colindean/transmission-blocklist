@@ -47,3 +47,7 @@ Any breakage is not my fault nor the fault of GitHub, whatever CI is used to aut
 
 This is based on [`guillehorno/transmission-blocklist`](https://github.com/guillehorno/transmission-blocklist),
 which is based on [shmup's blocklist generator](https://gist.github.com/shmup/29566c5268569069c256).
+
+This bears a lot of resemblance to [`Naunter/BT_BlockLists`](https://github.com/Naunter/BT_BlockLists),
+but isn't based on it.
+We got ideas from the same places and once discovering it, I've used some its ideas :wink:
