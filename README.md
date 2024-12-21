@@ -12,7 +12,7 @@
 ![Dynamic badge with GitHub commit activity](https://img.shields.io/github/commit-activity/y/colindean/transmission-blocklist)
 
 
-This repo uses GitHub Actions to assemble and publish a comprehensive IP blocklist weekly.
+This repo uses GitHub Actions to assemble a comprehensive IP blocklist weekly and publish it when it differs from the previous release.
 See `build-blocklist.sh` for sources.
 
 ## Use
