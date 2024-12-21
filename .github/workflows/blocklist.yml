@@ -25,7 +25,10 @@ jobs:
         run: |
           ./blocklist-build.sh
           ./analyze.sh | tee stats.json
-          echo "build_tag=$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)" >> $GITHUB_ENV
+          # .beats 1000th of a day -> https://codegolf.stackexchange.com/a/272628
+          # perl is available everywhere, right?
+          beat=$(perl -M5.010 -e '$_=((@t=gmtime)[1]/60+$t[2]+1)/24 .000;/\d{3}/;say$&')
+          echo "build_tag=$(date +'%Y.%m.%d').${beat}-$(git log --format=%h -1)" >> $GITHUB_ENV
       - name: Check if release is needed
         id: check
         continue-on-error: true
