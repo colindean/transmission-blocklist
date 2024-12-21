@@ -5,6 +5,7 @@
 
 ![Dynamic badge with GitHub Release Date](https://img.shields.io/github/release-date/colindean/transmission-blocklist)
 ![Dynamic badge with GitHub Release](https://img.shields.io/github/v/release/colindean/transmission-blocklist)
+![Dynamic badge with CalVer scheme](https://img.shields.io/badge/CalVer-YYYY.MM.DD.beat--hash-22bfda.svg)
 ![Dynamic badge with GitHub License](https://img.shields.io/github/license/colindean/transmission-blocklist)
 
 [![Dynamic badge with Build Blocklist action status](https://github.com/colindean/transmission-blocklist/actions/workflows/blocklist.yml/badge.svg)](https://github.com/colindean/transmission-blocklist/actions/workflows/blocklist.yml)
