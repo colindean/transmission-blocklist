@@ -42,3 +42,8 @@ localhost:9091/transmission/rpc/ responded: "success"
 This is provided without any warranty or suitability or guarantee of updates if you use the `latest` release functionality of GitHub Releases to retrieve the latest release regularly.
 Any breakage is not my fault nor the fault of GitHub, whatever CI is used to automate builds, or any authors past or present of this software.
 **Blocklists keep you safe from bad actors, even when you're just seeding open source software like I am.**
+
+## History
+
+This is based on [`guillehorno/transmission-blocklist`](https://github.com/guillehorno/transmission-blocklist),
+which is based on [shmup's blocklist generator](https://gist.github.com/shmup/29566c5268569069c256).
