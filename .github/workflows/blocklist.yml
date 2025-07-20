@@ -17,7 +17,7 @@ jobs:
         os:
           - ubuntu-latest
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@31cf7361439cbdffbc73a3bb138b7e1662d46c9b # v1.0.2-beta6
+      - uses: colindean/actions-permissions/monitor@3ac86de19fb8c05dc20cfaed35ad143997e0f3c3 # v1.0.2-beta6
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
       - name: Checkout
