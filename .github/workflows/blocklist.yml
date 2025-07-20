@@ -9,8 +9,13 @@ name: Build Blocklist
       - main
   schedule:
       - cron: "0 0 * * 4"
+
+permissions: {}
+
 jobs:
   Build:
+    permissions:
+      id-token: write # trusted publishing + attestations
     runs-on: '${{ matrix.os }}'
     strategy:
       matrix:
