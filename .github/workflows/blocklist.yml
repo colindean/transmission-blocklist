@@ -14,8 +14,6 @@ permissions: {}
 
 jobs:
   Build:
-    permissions:
-      id-token: write # trusted publishing + attestations
     runs-on: '${{ matrix.os }}'
     strategy:
       matrix:
