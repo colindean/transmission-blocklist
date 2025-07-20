@@ -20,8 +20,11 @@ jobs:
         os:
           - ubuntu-latest
     steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@31cf7361439cbdffbc73a3bb138b7e1662d46c9b # v1.0.2-beta6
+        with:
+          config: ${{ vars.PERMISSIONS_CONFIG }}
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # 4.2.2
         with:
           persist-credentials: false
       - name: Build and resolve tag
@@ -39,7 +42,7 @@ jobs:
           ./compare-previous.sh
       - name: Release on non-PRs if needed
         if: "github.event_name == 'workflow_dispatch' || ( !github.event.pull_request && steps.check.outcome == 'success' )"
-        uses: "softprops/action-gh-release@v2"
+        uses: "softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8" # v2.3.2
         with:
           # repo_token: "${{ secrets.GITHUB_TOKEN }}"
           tag_name: "${{ env.build_tag }}"
