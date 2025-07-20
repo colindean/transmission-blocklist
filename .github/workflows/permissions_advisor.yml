@@ -21,7 +21,7 @@ jobs:
   advisor:
     runs-on: ubuntu-latest
     steps:
-    - uses: GitHubSecurityLab/actions-permissions/advisor@v1
+    - uses: GitHubSecurityLab/actions-permissions/advisor@v1 # v1.0.2-beta6
       with:
         name: ${{ inputs.name }}
         count: ${{ fromJSON(inputs.count) }}
