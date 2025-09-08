@@ -44,7 +44,7 @@ jobs:
           ./compare-previous.sh
       - name: Release on non-PRs if needed
         if: "github.event_name == 'workflow_dispatch' || ( !github.event.pull_request && steps.check.outcome == 'success' )"
-        uses: "softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8" # v2.3.2
+        uses: "softprops/action-gh-release@6cbd405e2c4e67a21c47fa9e383d020e4e28b836" # v2.3.3
         with:
           # repo_token: "${{ secrets.GITHUB_TOKEN }}"
           tag_name: "${{ env.build_tag }}"
