@@ -17,7 +17,21 @@ get_zip_urls() {
 
 get_plaintext_urls() {
   #echo 'https://mirror.codebucket.de/transmission/blocklist.p2p'
-  echo ""
+  # https://github.com/Naunter/BT_BlockLists/blob/913f850400c34839e784b91c4e21a97743058b41/url.txt
+  cat <<HERE
+https://reputation.alienvault.com/reputation.generic
+https://www.binarydefense.com/banlist.txt
+https://lists.blocklist.de/lists/all.txt
+https://iplists.firehol.org/files/bruteforceblocker.ipset
+https://cinsscore.com/list/ci-badguys.txt
+https://iplists.firehol.org/files/cruzit_web_attacks.ipset
+https://www.darklist.de/raw.php
+https://rules.emergingthreats.net/blockrules/compromised-ips.txt
+https://feodotracker.abuse.ch/downloads/ipblocklist.txt
+https://iplists.firehol.org/files/nixspam.ipset
+https://sslbl.abuse.ch/blacklist/sslipblacklist.txt
+https://pgl.yoyo.org/adservers/iplist.php?ipformat=plain&showintro=0&mimetype=plaintext
+HERE
 }
 
 if command -v gzcat > /dev/null; then
@@ -57,20 +71,20 @@ if [ -z "${NO_CACHE}" ] && [ -n "$(command -v aria2c)" ]; then
   # and cleanup afterward
   rm -rf "${CACHE}"
 
-  # get_plaintext_urls |
-  #   aria2c \
-  #     --input-file=- \
-  #     --dir="${CACHE}" \
-  #     --optimize-concurrent-downloads=true \
-  #     --stderr \
-  #     --max-connection-per-server="$(nproc)"
+  get_plaintext_urls |
+    aria2c \
+      --input-file=- \
+      --dir="${CACHE}" \
+      --optimize-concurrent-downloads=true \
+      --stderr \
+      --max-connection-per-server="$(nproc)"
 
   # and then rely on cat to output sequentially
-  # cat "${CACHE}"/* |
-  #   grep -E -v '^#' |
-  #   gzip -1 >> blocklist.gz
-  # # and cleanup afterward
-  # rm -rf "${CACHE}"
+  cat "${CACHE}"/* |
+  grep -E -v '^#' |
+  gzip -1 >> blocklist.gz
+  # and cleanup afterward
+  rm -rf "${CACHE}"
 
 else
 
@@ -86,10 +100,10 @@ else
     grep -E -v '^#' |
     gzip -1 >> blocklist.gz
 
-  # get_plaintext_urls |
-  #   xargs wget -O - |
-  #   grep -E -v '^#' |
-  #   gzip -1 >> blocklist.gz
+  get_plaintext_urls |
+    xargs wget -O - |
+    grep -E -v '^#' |
+    gzip -1 >> blocklist.gz
 
 fi
 
