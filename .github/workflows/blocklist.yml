@@ -49,5 +49,6 @@ jobs:
         run: >
           gh release create "${{ env.build_tag }}"
           --title "${{ env.build_tag }}"
+          --notes ""
           blocklist.gz
           stats.json
