@@ -18,7 +18,7 @@ get_zip_urls() {
 get_plaintext_urls() {
   #echo 'https://mirror.codebucket.de/transmission/blocklist.p2p'
   # https://github.com/Naunter/BT_BlockLists/blob/913f850400c34839e784b91c4e21a97743058b41/url.txt
-  echo <<-HERE
+  cat <<-HERE
     https://reputation.alienvault.com/reputation.generic
     https://www.binarydefense.com/banlist.txt
     https://lists.blocklist.de/lists/all.txt
