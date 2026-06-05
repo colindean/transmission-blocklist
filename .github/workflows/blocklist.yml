@@ -22,9 +22,9 @@ jobs:
         os:
           - ubuntu-latest
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@31cf7361439cbdffbc73a3bb138b7e1662d46c9b # v1.0.2-beta6
-        with:
-          config: ${{ vars.PERMISSIONS_CONFIG }}
+      # - uses: GitHubSecurityLab/actions-permissions/monitor@31cf7361439cbdffbc73a3bb138b7e1662d46c9b # v1.0.2-beta6
+      #  with:
+      #    config: ${{ vars.PERMISSIONS_CONFIG }}
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # 6.0.2
         with:
