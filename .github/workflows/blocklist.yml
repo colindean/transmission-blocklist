@@ -47,8 +47,8 @@ jobs:
         env:
           GH_TOKEN: "${{ github.token }}"
         run: >
-          gh release create "${{ env.build_tag }}"
-          --title "${{ env.build_tag }}"
+          gh release create "${build_tag}"
+          --title "${build_tag}"
           --notes ""
           blocklist.gz
           stats.json
